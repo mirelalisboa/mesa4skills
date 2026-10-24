@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{{ point.title }} — Mesa 4{% endblock %}
+{% block content %}
+<section class="shell page-intro"><a class="back" href="{{ url_for('home') }}#skills">← Pontos de partida</a><p class="kicker section-kicker">{{ point.eyebrow }}</p><h1>{{ point.title }}<br><em>para usar hoje.</em></h1><p class="lead">{{ point.description }}</p></section>
+<section class="shell prompt-section"><div class="prompt-intro"><p class="kicker">PROMPTS PRONTOS</p><h2>Copie, adapte<br>e pratique.</h2></div><div class="starting-prompts">{% for prompt in point.prompts %}<article class="starting-prompt"><span>0{{ loop.index }}</span><p>{{ prompt }}</p><button class="copy-button" type="button" onclick="copyStartingPrompt(this)">Copiar prompt</button></article>{% endfor %}</div></section>
+<section class="shell next-actions"><p class="kicker">CONTINUE A PRÁTICA</p><div class="action-links">{% for label, href in point.links %}<a class="primary-link" href="{{ href }}">{{ label }} <span>↗</span></a>{% endfor %}</div></section>
+{% endblock %}
+{% block scripts %}<script>function copyStartingPrompt(button){navigator.clipboard.writeText(button.previousElementSibling.innerText);button.textContent='Copiado ✓';}</script>{% endblock %}

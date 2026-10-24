@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero shell">
+  <div class="hero-copy"><p class="kicker">KIT DE CRIAÇÃO · MESA 4</p><h1>Uma boa ideia merece um caminho <em>claro.</em></h1><p class="lead">Escolha uma skill, responda algumas perguntas e receba um primeiro rascunho pronto para revisar.</p></div>
+  <div class="hero-orbit" aria-hidden="true"><span>ideia</span><span>clareza</span><span>ação</span></div>
+</section>
+<section class="channel-feature shell"><div class="channel-image"><img src="{{ url_for('static', filename='images/mesa4-video.jpeg') }}" alt="Tela de edição de vídeo do canal Mesa 4"></div><div class="channel-copy"><p class="kicker">SOMOS MESA 4</p><h2>Ideias que saem da tela<br><em>e ganham movimento.</em></h2><p class="lead">Acompanhe o canal para aprender comunicação, criação de conteúdo e ferramentas práticas para construir sua presença online.</p><a class="primary-link" href="https://www.youtube.com/@SomosMesa4" target="_blank" rel="noopener noreferrer">Conhecer o canal no YouTube <span>↗</span></a></div></section>
+<section id="skills" class="shell section"><div class="section-heading"><p class="kicker">ESCOLHA SEU PONTO DE PARTIDA</p><h2>O que você quer fazer agora?</h2></div>
+  <div class="cards">{% for key, point in starting_points.items() %}<a class="card" href="{{ url_for('starting_point', point_key=key) }}"><span class="card-number">0{{ loop.index }}</span><p class="kicker">{{ point.eyebrow }}</p><h3>{{ point.title }}</h3><p>{{ point.description }}</p><span class="arrow">Abrir sessão <b>↗</b></span></a>{% endfor %}</div>
+</section>
+<section class="shell section skill-shortcut"><div class="section-heading"><p class="kicker">FERRAMENTAS DE CRIAÇÃO</p><h2>Ou comece por uma skill.</h2></div><div class="mini-links">{% for key, skill in skills.items() %}<a href="{{ url_for('use_skill', skill_id=key) }}"><span>{{ skill.eyebrow }}</span><b>{{ skill.name }} ↗</b></a>{% endfor %}</div></section>
+<section class="principles"><div class="shell principles-inner"><div><p class="kicker">COMO FUNCIONA</p><h2>Menos tela em branco.<br><em>Mais próximo passo.</em></h2></div><ol><li><b>01</b>Conte o contexto</li><li><b>02</b>Receba um rascunho</li><li><b>03</b>Revise com intenção</li></ol></div></section>
+<section class="explore-banner shell"><div><p class="kicker">NOVA ÁREA</p><h2>Aprenda, execute<br>e encontre seu ritmo.</h2><p class="lead">Planos de estudo, projetos para portfólio, estratégia de marca e prompts prontos para começar hoje.</p></div><a class="primary-link" href="{{ url_for('explore') }}">Explorar a biblioteca <span>↗</span></a></section>
+{% endblock %}

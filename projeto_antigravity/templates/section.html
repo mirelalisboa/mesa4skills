@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }} — Mesa 4{% endblock %}
+{% block content %}
+<section class="shell page-intro"><a class="back" href="{{ url_for('explore') }}">← Biblioteca</a><p class="kicker section-kicker">SESSÃO {{ section_key }}</p><h1>{{ section.title }}<br><em>na prática.</em></h1><p class="lead">{{ section.intro }}</p></section>
+<section class="shell section-detail"><div class="detail-list">{% for title, tag, description in section['items'] %}<article class="detail-card"><div><span class="detail-number">0{{ loop.index }}</span><span class="detail-tag">{{ tag }}</span></div><h2>{{ title }}</h2><p>{{ description }}</p>{% if tag == 'copywriting' %}<a class="primary-link" href="{{ url_for('study_plan') }}">Montar plano <span>↗</span></a>{% elif tag == 'prompts' %}<a class="primary-link" href="{{ url_for('prompts') }}">Criar prompts <span>↗</span></a>{% else %}<a class="primary-link" href="{{ url_for('explore') }}#ferramentas">Ver ferramentas <span>↘</span></a>{% endif %}</article>{% endfor %}</div></section>
+<section class="shell detail-next"><a class="back" href="{{ url_for('explore') }}">Voltar para todas as sessões →</a></section>
+{% endblock %}

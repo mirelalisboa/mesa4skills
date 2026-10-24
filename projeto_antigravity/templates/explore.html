@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Explorar — Mesa 4{% endblock %}
+{% block content %}
+<section class="shell page-intro"><p class="kicker">BIBLIOTECA MESA 4</p><h1>Escolha uma trilha.<br><em>Coloque em prática.</em></h1><p class="lead">Conteúdo estruturado para sair da inspiração e chegar a uma entrega concreta.</p></section>
+<section class="shell library-grid">{% for key, group in explore.items() %}<article class="library-group"><div class="group-heading"><span class="group-index">0{{ loop.index }}</span><div><p class="kicker">{{ key }}</p><h2>{{ group.title }}</h2></div></div><p class="group-intro">{{ group.intro }}</p><div class="resource-list">{% for title, tag, description in group['items'] %}<div class="resource"><span>{{ tag }}</span><h3>{{ title }}</h3><p>{{ description }}</p><a href="{{ url_for('explore_section', section_key=key) }}">Abrir sessão <b>↗</b></a></div>{% endfor %}</div><a class="section-link" href="{{ url_for('explore_section', section_key=key) }}">Ver todos os conteúdos desta sessão →</a></article>{% endfor %}</section>
+<section id="ferramentas" class="tools-section"><div class="shell"><p class="kicker">TRILHA DE FERRAMENTAS</p><h2>Escolha o essencial antes<br>de acumular aplicativos.</h2><div class="tools-grid">{% for name, description in tools.items() %}<div class="tool"><h3>{{ name }}</h3><p>{{ description }}</p></div>{% endfor %}</div></div></section>
+{% endblock %}
